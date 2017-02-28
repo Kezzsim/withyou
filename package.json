@@ -1,0 +1,21 @@
+{
+  "name": "WithYou",
+  "version": "0.1",
+  "description": "An artistic AI implementation that listens and aggregates data and then brings it up when you least expect it, envoking the serene",
+  "dependencies": {
+    "twitter": "^1.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kezzsim/withyou"
+  },
+  "keywords": [
+    "Artificial inteligence",
+    "god",
+    "confession"
+  ],
+  "author": "Kari Barry",
+  "contributors": [
+    "Stephanie Dinkins <stephanie.dinkins@stonybrook.edu>"
+  ]
+}
