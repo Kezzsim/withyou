@@ -1,9 +1,11 @@
 {
   "name": "WithYou",
-  "version": "0.1",
+  "version": "0.1.2-2",
   "description": "An artistic AI implementation that listens and aggregates data and then brings it up when you least expect it, envoking the serene",
+  "main": "twitterbot.js",
   "dependencies": {
-    "twitter": "^1.7.0"
+    "babel": "^6.23.0",
+    "twit": "^2.2.5"
   },
   "repository": {
     "type": "git",
