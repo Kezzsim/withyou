@@ -3,7 +3,7 @@ var fs = require('fs');
 // Requirements --------------------------------------
 var twit = require('twit');
 var config = require('./config.js');
-var filePrefixes = ["imam", "priest", "Rabbi", "sufi", "black reverend", "zen monk"]
+//var filePrefixes = ["imam", "priest", "Rabbi", "sufi", "black reverend", "zen monk"]
 //Globals --------------------------------------------
 //prevents reoccuring tweets, should be moved inside of the search function when scaled up
 var timeLine = [];
@@ -13,8 +13,8 @@ var timeLine = [];
 var Twitter = new twit(config);
 
 //Finds hashtags in each text file and gets the latest ones
-filePrefixes.forEach(function(val,index){
-var hashtags = fs.readFileSync(val+'.txt', 'utf8').split(",");
+
+var hashtags = fs.readFileSync(process.argv[2]+'.txt', 'utf8').split(",");
 var searchTweets = function(tag) {
 
   var params = {
@@ -47,4 +47,3 @@ for (var i = 0; i < hashtags.length; i++) {
   searchTweets(hashtags[i]);
 
 }
-})
