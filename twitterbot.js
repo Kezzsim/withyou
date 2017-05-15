@@ -1,7 +1,9 @@
+var fs = require('fs');
+
 // Requirements --------------------------------------
 var twit = require('twit');
 var config = require('./config.js');
-
+var filePrefixes = ["imam", "priest", "Rabbi", "sufi", "black reverend", "zen monk"]
 //Globals --------------------------------------------
 //prevents reoccuring tweets, should be moved inside of the search function when scaled up
 var timeLine = [];
@@ -10,10 +12,11 @@ var timeLine = [];
 //Import Twitter login settings
 var Twitter = new twit(config);
 
-//hard-coded hashtags for now, replace with dynamic variables
-var hashtags = ['#Mindfulness', '#Meditation','#transcend'];
-
+//Finds hashtags in each text file and gets the latest ones
+filePrefixes.forEach(function(val,index){
+var hashtags = fs.readFileSync(val+'.txt', 'utf8').split(",");
 var searchTweets = function(tag) {
+
   var params = {
     q: tag,
     result_type: 'recent',
@@ -21,6 +24,7 @@ var searchTweets = function(tag) {
   }
 Twitter.get('search/tweets', params, function(err, data) {
       // if there no errors
+
         if (!err) {
           var tweets = data.statuses;
           for (var i = 0; i < tweets.length; i++) {
@@ -41,4 +45,6 @@ Twitter.get('search/tweets', params, function(err, data) {
 //Run Once, search through each hashtag
 for (var i = 0; i < hashtags.length; i++) {
   searchTweets(hashtags[i]);
+
 }
+})
